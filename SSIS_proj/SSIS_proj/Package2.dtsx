@@ -1,0 +1,2423 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/26/2021 4:37:47 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-DPHO4AGU"
+  DTS:CreatorName="LAPTOP-DPHO4AGU\Fatima zahra Azennag"
+  DTS:DTSID="{32B0F278-6692-40B8-AA4E-05911EFB5B41}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{CE21EDB0-A5DF-40C4-AB94-FF5273CB07B8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.AdventureWorks2012]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{811D8E11-1068-48C9-B2AF-93DD03EF7239}"
+      DTS:ObjectName="LocalHost.AdventureWorks2012">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AdventureWorks2012;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.LIGHTADVENTUREWORKSDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{36C77153-0222-40E3-9DFA-02A96FC02A80}"
+      DTS:ObjectName="localhost.LIGHTADVENTUREWORKSDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=LIGHTADVENTUREWORKSDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Insertion et Mise à jour des lignes de la dimension customers"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{B4F9785A-ED7E-427D-8A8B-19B3A5C9584E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insertion et Mise à jour des lignes de la dimension customers"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="Colonne dérivée"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[CurrentFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[CurrentFlag]"
+                      name="CurrentFlag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">(DT_BOOL)("0")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_BOOL)("0")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="Colonne dérivée 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Outputs[Sortie de colonne dérivée].Columns[CurrentFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Outputs[Sortie de colonne dérivée].Columns[CurrentFlag]"
+                      name="CurrentFlag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">(DT_BOOL)("1")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_BOOL)("1")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Commande OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;2"
+              description="Exécute une instruction SQL pour chaque ligne d'un flux de données. Par exemple, appelez une procédure stockée 'nouvelle configuration d'employé' pour chaque ligne de la table 'nouveaux employés'. Remarque : l'exécution d'une instruction SQL pour chaque ligne d'un flux de données volumineux peut prendre beaucoup de temps."
+              name="Commande OLE DB"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Customers] SET [CurrentFlag] = ? WHERE [CustomerDwKey] = ? AND [CurrentFlag] = '1'</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.LIGHTADVENTUREWORKSDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.LIGHTADVENTUREWORKSDW]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Inputs[Entrée de commande OLE DB]"
+                  errorOrTruncationOperation="Exécution de commande"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de commande OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Inputs[Entrée de commande OLE DB].Columns[CustomerDwKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerDwKey"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CustomerDwKey]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Inputs[Entrée de commande OLE DB].Columns[CurrentFlag]"
+                      cachedDataType="bool"
+                      cachedName="CurrentFlag"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[CurrentFlag]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_0]"
+                      dataType="bool"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Outputs[Sortie de commande OLE DB]"
+                  exclusionGroup="1"
+                  name="Sortie de commande OLE DB"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Inputs[Entrée de commande OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Outputs[Sortie d'erreur de commande OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de commande OLE DB"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Inputs[Entrée de commande OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Commande OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;2"
+              description="Exécute une instruction SQL pour chaque ligne d'un flux de données. Par exemple, appelez une procédure stockée 'nouvelle configuration d'employé' pour chaque ligne de la table 'nouveaux employés'. Remarque : l'exécution d'une instruction SQL pour chaque ligne d'un flux de données volumineux peut prendre beaucoup de temps."
+              name="Commande OLE DB 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Customers] SET [BirthDate] = ?,[City] = ?,[CountryRegion] = ?,[CustomerKey] = ?,[EmailAddress] = ?,[FullName] = ?,[Gender] = ?,[MaritalStatus] = ?,[StateProvince] = ? WHERE [CustomerDwKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.LIGHTADVENTUREWORKSDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.LIGHTADVENTUREWORKSDW]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB]"
+                  errorOrTruncationOperation="Exécution de commande"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de commande OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].Columns[CountryRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryRegion"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_2]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CountryRegion]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].Columns[CustomerDwKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerDwKey"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_9]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CustomerDwKey]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BusinessEntityID]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].Columns[EmailAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmailAddress"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_4]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[EmailAddress]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="101"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_5]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_6]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_7]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MaritalStatus]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].Columns[StatePovince]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StatePovince"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_8]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StatePovince]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_0]"
+                      dataType="dbDate"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="30"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_4]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_5]"
+                      dataType="wstr"
+                      length="150"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_6]"
+                      dataType="wstr"
+                      length="1"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_7]"
+                      dataType="wstr"
+                      length="1"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_8]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_9]"
+                      dataType="i4"
+                      name="Param_9">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Outputs[Sortie de commande OLE DB]"
+                  exclusionGroup="1"
+                  name="Sortie de commande OLE DB"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Outputs[Sortie d'erreur de commande OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de commande OLE DB"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Commande OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;2"
+              description="Exécute une instruction SQL pour chaque ligne d'un flux de données. Par exemple, appelez une procédure stockée 'nouvelle configuration d'employé' pour chaque ligne de la table 'nouveaux employés'. Remarque : l'exécution d'une instruction SQL pour chaque ligne d'un flux de données volumineux peut prendre beaucoup de temps."
+              name="Commande OLE DB 2"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Customers] SET [MaritalStatus] = ? WHERE [CustomerDwKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.LIGHTADVENTUREWORKSDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.LIGHTADVENTUREWORKSDW]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Inputs[Entrée de commande OLE DB]"
+                  errorOrTruncationOperation="Exécution de commande"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de commande OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Inputs[Entrée de commande OLE DB].Columns[CustomerDwKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerDwKey"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CustomerDwKey]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Inputs[Entrée de commande OLE DB].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MaritalStatus]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="1"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Outputs[Sortie de commande OLE DB]"
+                  exclusionGroup="1"
+                  name="Sortie de commande OLE DB"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Inputs[Entrée de commande OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Outputs[Sortie d'erreur de commande OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de commande OLE DB"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Inputs[Entrée de commande OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination d'insertion"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Customers]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.LIGHTADVENTUREWORKSDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.LIGHTADVENTUREWORKSDW]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].Columns[CustomerDwKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerDwKey"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[CustomerDwKey]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[CustomerDwKey]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[BusinessEntityID]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="101"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[FullName]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].Columns[EmailAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmailAddress"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[EmailAddress]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[EmailAddress]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[BirthDate]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[MaritalStatus]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[MaritalStatus]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[Gender]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[City]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].Columns[StatePovince]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StatePovince"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[StateProvince]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[StatePovince]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].Columns[CountryRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryRegion"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[CountryRegion]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[CountryRegion]" />
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].Columns[CurrentFlag]"
+                      cachedDataType="bool"
+                      cachedName="CurrentFlag"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[CurrentFlag]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Outputs[Sortie de colonne dérivée].Columns[CurrentFlag]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[CustomerDwKey]"
+                      dataType="i4"
+                      name="CustomerDwKey" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="150"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[EmailAddress]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[Education]"
+                      dataType="wstr"
+                      length="40"
+                      name="Education" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[Occupation]"
+                      dataType="wstr"
+                      length="100"
+                      name="Occupation" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="30"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[StateProvince]"
+                      dataType="wstr"
+                      length="50"
+                      name="StateProvince" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[CountryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      name="CountryRegion" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[Age]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[CurrentFlag]"
+                      dataType="bool"
+                      name="CurrentFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[insert_date]"
+                      dataType="dbTimeStamp"
+                      name="insert_date" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB].ExternalColumns[update_date]"
+                      dataType="dbTimeStamp"
+                      name="update_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Dimension à variation lente;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;3"
+              description="Met à jour une dimension d'entrepôt de données (Data Warehouse) SQL Server Analysis Services. Mettez à jour les enregistrements de dimension qui sont déjà présents et insérez ceux qui ne le sont pas. Par exemple, mettez à jour la table DimProduct de la base de données OLAP AdventureWorksDW avec les données de la table Products dans la base de données OLTP AdventureWorks."
+              name="Dimension à variation lente"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SELECT utilisée pour créer un ensemble de lignes du schéma."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [BirthDate], [City], [CountryRegion], [CustomerDwKey], [CustomerKey], [EmailAddress], [FullName], [Gender], [MaritalStatus], [StateProvince],[CurrentFlag] FROM [dbo].[Customers]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la clause WHERE dans l'instruction SELECT qui sélectionne la ligne actuelle parmi les lignes comportant des clés de travail identiques."
+                  name="CurrentRowWhere">[CurrentFlag] = '1'</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les mises à jour d'attribut d'historique sont dirigées sur la sortie de la transformation pour les mises à jour d'attribut de validation."
+                  name="UpdateChangingAttributeHistory">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si la transformation échoue lorsque les colonnes comportant des attributs fixes contiennent des modifications."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de la colonne pour le membre déduit."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les mises à jour de membre déduit sont détectées."
+                  name="EnableInferredMember">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si la transformation échoue lorsque la recherche d'un enregistrement existant échoue."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie que toutes les lignes de l'entrée sont nouvelles ou que la transformation détecte le type de modification."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Connections[LookupConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.LIGHTADVENTUREWORKSDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.LIGHTADVENTUREWORKSDW]"
+                  description="Définit la connexion à utiliser pour faire des recherches dans la table de dimension"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente]"
+                  name="Entrée de dimension à variation lente">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[BirthDate]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BirthDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[City]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[City]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].Columns[CountryRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryRegion"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[CountryRegion]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CountryRegion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].Columns[CustomerDwKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerDwKey"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[CustomerDwKey]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CustomerDwKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BusinessEntityID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].Columns[EmailAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmailAddress"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[EmailAddress]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[EmailAddress]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="101"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[FullName]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[FullName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[Gender]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Gender]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[MaritalStatus]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MaritalStatus]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].Columns[StatePovince]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StatePovince"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[StateProvince]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StatePovince]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="30"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[CountryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      name="CountryRegion" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[CustomerDwKey]"
+                      dataType="i4"
+                      name="CustomerDwKey" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[EmailAddress]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="150"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[StateProvince]"
+                      dataType="wstr"
+                      length="50"
+                      name="StateProvince" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente].ExternalColumns[CurrentFlag]"
+                      dataType="bool"
+                      name="CurrentFlag" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Outputs[Sortie inchangée]"
+                  description="Lignes inchangées"
+                  exclusionGroup="1"
+                  name="Sortie inchangée"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Outputs[Nouvelle sortie]"
+                  description="Nouvelles lignes"
+                  exclusionGroup="1"
+                  name="Nouvelle sortie"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Outputs[Sortie d'attribut fixe]"
+                  description="Lignes comportant des modifications dans les colonnes marquées FixedAttribute"
+                  exclusionGroup="1"
+                  name="Sortie d'attribut fixe"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Outputs[Sortie de mises à jour d'attribut de validation]"
+                  description="Ces lignes contiennent de nouvelles informations sur les modifications de colonnes ChangingAttribute (type 1)"
+                  exclusionGroup="1"
+                  name="Sortie de mises à jour d'attribut de validation"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Outputs[Sortie d'insertions d'attribut d'historique]"
+                  description="Les modifications sur HistoricalAttribute (type 2) apparaissent dans ces nouvelles lignes"
+                  exclusionGroup="2"
+                  name="Sortie d'insertions d'attribut d'historique"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Outputs[Sortie de mises à jour de membre déduit]"
+                  description="Information de mise à jour de ligne de dimension initiale non remplie"
+                  exclusionGroup="1"
+                  name="Sortie de mises à jour de membre déduit"
+                  synchronousInputId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+NEXT VALUE FOR LIGHTADVENTUREWORKSDW.dbo.SeqCustomerDwKey AS CustomerDwKey,
+C.BusinessEntityID, C.FirstName + ' ' + C.LastName AS FullName, E.EmailAddress, H.BirthDate,
+H.MaritalStatus, H.Gender, A.City, S.Name AS StatePovince,R.Name AS CountryRegion
+FROM AdventureWorks2012.Person.Person AS C 
+INNER JOIN AdventureWorks2012.Person.BusinessEntity AS G 
+ON C.BusinessEntityID = G.BusinessEntityID
+inner join AdventureWorks2012.HumanResources.Employee as H 
+on C.BusinessEntityID = H.BusinessEntityID 
+inner join AdventureWorks2012.Person.EmailAddress as E 
+on C.BusinessEntityID = E.BusinessEntityID 
+inner Join AdventureWorks2012.Person.BusinessEntityAddress As B 
+ON G.BusinessEntityID = B.BusinessEntityID
+ inner Join AdventureWorks2012.Person.Address As A 
+ON  A.AddressID = B.AddressID 
+inner join AdventureWorks2012.Person.StateProvince as S 
+on A.AddressID = S.StateProvinceID 
+inner join AdventureWorks2012.Person.CountryRegion as R 
+on S.CountryRegionCode = R.CountryRegionCode</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AdventureWorks2012]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AdventureWorks2012]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CustomerDwKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CustomerDwKey]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CustomerDwKey]"
+                      name="CustomerDwKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[FullName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[FullName]"
+                      length="101"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[FullName]"
+                      name="FullName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[EmailAddress]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[EmailAddress]"
+                      length="50"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[EmailAddress]"
+                      name="EmailAddress"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BirthDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[BirthDate]"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[MaritalStatus]"
+                      length="1"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Gender]"
+                      length="1"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[City]"
+                      length="30"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StatePovince]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[StatePovince]"
+                      length="50"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StatePovince]"
+                      name="StatePovince"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CountryRegion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CountryRegion]"
+                      length="50"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CountryRegion]"
+                      name="CountryRegion"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CustomerDwKey]"
+                      dataType="i4"
+                      name="CustomerDwKey" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="101"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[EmailAddress]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="30"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[StatePovince]"
+                      dataType="wstr"
+                      length="50"
+                      name="StatePovince" />
+                    <externalMetadataColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CountryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      name="CountryRegion" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CustomerDwKey]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CustomerDwKey]"
+                      name="CustomerDwKey" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[BusinessEntityID]"
+                      name="BusinessEntityID" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[FullName]"
+                      dataType="wstr"
+                      length="101"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[FullName]"
+                      name="FullName" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[EmailAddress]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[EmailAddress]"
+                      name="EmailAddress" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[BirthDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[MaritalStatus]"
+                      name="MaritalStatus" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[City]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[StatePovince]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[StatePovince]"
+                      name="StatePovince" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CountryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CountryRegion]"
+                      name="CountryRegion" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Unir tout;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Combine des lignes de plusieurs flux de données sans effectuer de tri. Par exemple, rajoutez des lignes à un flux de données après correction des erreurs. Si le tri est important, nous recommandons l'utilisation de la transformation de fusion."
+              name="Unir tout"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1]"
+                  name="Unir tout entrée 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1].Columns[CustomerDwKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerDwKey"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CustomerDwKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[CustomerDwKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BusinessEntityID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[BusinessEntityID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="101"
+                      cachedName="FullName"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[FullName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[FullName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1].Columns[EmailAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmailAddress"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[EmailAddress]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[EmailAddress]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BirthDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[BirthDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MaritalStatus]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[MaritalStatus]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[Gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="City"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[City]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[City]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1].Columns[StatePovince]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StatePovince"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StatePovince]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[StatePovince]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1].Columns[CountryRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryRegion"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CountryRegion]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[CountryRegion]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1]"
+                  hasSideEffects="true"
+                  name="Entrée Union All 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1].Columns[CustomerDwKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerDwKey"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CustomerDwKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[CustomerDwKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BusinessEntityID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[BusinessEntityID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="101"
+                      cachedName="FullName"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[FullName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[FullName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1].Columns[EmailAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmailAddress"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[EmailAddress]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[EmailAddress]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BirthDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[BirthDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MaritalStatus]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[MaritalStatus]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[Gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="City"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[City]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[City]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1].Columns[StatePovince]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StatePovince"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StatePovince]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[StatePovince]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1].Columns[CountryRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryRegion"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CountryRegion]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[CountryRegion]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Entrée Union All 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1]"
+                  name="Unir tout sortie 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[CustomerDwKey]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[CustomerDwKey]"
+                      name="CustomerDwKey" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[BusinessEntityID]"
+                      name="BusinessEntityID" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[FullName]"
+                      dataType="wstr"
+                      length="101"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[FullName]"
+                      name="FullName" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[EmailAddress]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[EmailAddress]"
+                      name="EmailAddress" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[BirthDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[MaritalStatus]"
+                      name="MaritalStatus" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[City]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[StatePovince]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[StatePovince]"
+                      name="StatePovince" />
+                    <outputColumn
+                      refId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[CountryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1].Columns[CountryRegion]"
+                      name="CountryRegion" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Nouvelle sortie]"
+              endId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Unir tout entrée 1]"
+              name="Nouvelle sortie"
+              startId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Outputs[Nouvelle sortie]" />
+            <path
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie d'insertions d'attribut d'historique]"
+              endId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Inputs[Entrée de colonne dérivée]"
+              name="Sortie d'insertions d'attribut d'historique"
+              startId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Outputs[Sortie d'insertions d'attribut d'historique]" />
+            <path
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de colonne dérivée]"
+              endId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Inputs[Entrée de commande OLE DB]"
+              name="Sortie de colonne dérivée"
+              startId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de colonne dérivée1]"
+              endId="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de colonne dérivée"
+              startId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de commande OLE DB]"
+              endId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Inputs[Entrée Union All 1]"
+              name="Sortie de commande OLE DB"
+              startId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB.Outputs[Sortie de commande OLE DB]" />
+            <path
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de mises à jour d'attribut de validation]"
+              endId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2.Inputs[Entrée de commande OLE DB]"
+              name="Sortie de mises à jour d'attribut de validation"
+              startId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Outputs[Sortie de mises à jour d'attribut de validation]" />
+            <path
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de mises à jour de membre déduit]"
+              endId="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1.Inputs[Entrée de commande OLE DB]"
+              name="Sortie de mises à jour de membre déduit"
+              startId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Outputs[Sortie de mises à jour de membre déduit]" />
+            <path
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de source OLE DB]"
+              endId="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente.Inputs[Entrée de dimension à variation lente]"
+              name="Sortie de source OLE DB"
+              startId="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Unir tout sortie 1]"
+              endId="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1.Inputs[Entrée de colonne dérivée]"
+              name="Unir tout sortie 1"
+              startId="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout.Outputs[Unir tout sortie 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="359.2,41.6"
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers"
+          TopLeft="214.880935651781,76.2666673517851" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Insertion et Mise à jour des lignes de la dimension customers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB"
+          TopLeft="162.9,5.49999999999995" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée"
+          TopLeft="23.7,208.7" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers\Colonne dérivée 1"
+          TopLeft="157.7,513.5" />
+        <NodeLayout
+          Size="117.6,41.6"
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers\Unir tout"
+          TopLeft="180.1,411.9" />
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 2"
+          TopLeft="542.1,208.7" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers\Destination d'insertion"
+          TopLeft="148.5,615.099999999999" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB"
+          TopLeft="5.49999999999997,310.3" />
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers\Commande OLE DB 1"
+          TopLeft="300.1,208.7" />
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente"
+          TopLeft="136.9,107.1" />
+        <EdgeLayout
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de colonne dérivée1]"
+          TopLeft="238.9,555.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de colonne dérivée]"
+          TopLeft="100.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9,59.9999999999999"
+              Start="0,0"
+              End="-9,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,30"
+                    Point2="-9,30"
+                    Point3="-9,34" />
+                  <mssgle:LineSegment
+                    End="-9,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie d'insertions d'attribut d'historique]"
+          TopLeft="180.1,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-79.2,60"
+              Start="0,0"
+              End="-79.2,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8512396694215" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8512396694215"
+                    Point2="0,17.8512396694215"
+                    Point3="-4,17.8512396694215" />
+                  <mssgle:LineSegment
+                    End="-75.2,17.8512396694215" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-75.2,17.8512396694215"
+                    Point2="-79.2,17.8512396694215"
+                    Point3="-79.2,21.8512396694215" />
+                  <mssgle:LineSegment
+                    End="-79.2,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-128.14201171875,22.8512396694215,177.0840234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Nouvelle sortie]"
+          TopLeft="219.3,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37.8666666666666,263.2"
+              Start="0,0"
+              End="37.8666666666666,255.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,138.016007982609" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,138.016007982609"
+                    Point2="0,142.016007982609"
+                    Point3="4,142.016007982609" />
+                  <mssgle:LineSegment
+                    End="33.8666666666666,142.016007982609" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33.8666666666666,142.016007982609"
+                    Point2="37.8666666666666,142.016007982609"
+                    Point3="37.8666666666666,146.016007982609" />
+                  <mssgle:LineSegment
+                    End="37.8666666666666,255.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-14.2030143229167,147.016007982609,66.2726953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Unir tout sortie 1]"
+          TopLeft="238.9,453.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de source OLE DB]"
+          TopLeft="238.9,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de mises à jour de membre déduit]"
+          TopLeft="258.5,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="132.4,59.9999999999999"
+              Start="0,0"
+              End="132.4,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.8112798264642" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.8112798264642"
+                    Point2="0,26.8112798264642"
+                    Point3="4,26.8112798264642" />
+                  <mssgle:LineSegment
+                    End="128.4,26.8112798264642" />
+                  <mssgle:CubicBezierSegment
+                    Point1="128.4,26.8112798264642"
+                    Point2="132.4,26.8112798264642"
+                    Point3="132.4,30.8112798264642" />
+                  <mssgle:LineSegment
+                    End="132.4,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24.86205078125,31.8112798264642,182.1241015625,12.2490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de mises à jour d'attribut de validation]"
+          TopLeft="297.7,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="335.2,59.9999999999999"
+              Start="0,0"
+              End="335.2,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8512396694215" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8512396694215"
+                    Point2="0,17.8512396694215"
+                    Point3="4,17.8512396694215" />
+                  <mssgle:LineSegment
+                    End="331.2,17.8512396694215" />
+                  <mssgle:CubicBezierSegment
+                    Point1="331.2,17.8512396694215"
+                    Point2="335.2,17.8512396694215"
+                    Point3="335.2,21.8512396694215" />
+                  <mssgle:LineSegment
+                    End="335.2,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="67.76740234375,22.8512396694215,199.6651953125,12.2490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insertion et Mise à jour des lignes de la dimension customers.Paths[Sortie de commande OLE DB]"
+          TopLeft="91.9,351.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="128.733333333333,59.9999999999998"
+              Start="0,0"
+              End="128.733333333333,52.4999999999998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5167785234898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5167785234898"
+                    Point2="0,35.5167785234898"
+                    Point3="4,35.5167785234898" />
+                  <mssgle:LineSegment
+                    End="124.733333333333,35.5167785234898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="124.733333333333,35.5167785234898"
+                    Point2="128.733333333333,35.5167785234898"
+                    Point3="128.733333333333,39.5167785234898" />
+                  <mssgle:LineSegment
+                    End="128.733333333333,52.4999999999998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insertion et Mise à jour des lignes de la dimension customers\Source OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insertion et Mise à jour des lignes de la dimension customers\Dimension à variation lente">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{36C77153-0222-40E3-9DFA-02A96FC02A80}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[Customers]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source OLE DB.Sorties[Sortie de source OLE DB].Colonnes[BirthDate]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;BirthDate&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source OLE DB.Sorties[Sortie de source OLE DB].Colonnes[City]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;City&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source OLE DB.Sorties[Sortie de source OLE DB].Colonnes[CountryRegion]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CountryRegion&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source OLE DB.Sorties[Sortie de source OLE DB].Colonnes[CustomerDwKey]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CustomerDwKey&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source OLE DB.Sorties[Sortie de source OLE DB].Colonnes[BusinessEntityID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CustomerKey&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source OLE DB.Sorties[Sortie de source OLE DB].Colonnes[EmailAddress]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;EmailAddress&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source OLE DB.Sorties[Sortie de source OLE DB].Colonnes[FullName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;FullName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source OLE DB.Sorties[Sortie de source OLE DB].Colonnes[Gender]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Gender&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source OLE DB.Sorties[Sortie de source OLE DB].Colonnes[MaritalStatus]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;MaritalStatus&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Source OLE DB.Sorties[Sortie de source OLE DB].Colonnes[StatePovince]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;StateProvince&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Colonne dérivée&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Commande OLE DB&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Unir tout&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Colonne dérivée 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Destination d'insertion&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Commande OLE DB 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Commande OLE DB 2&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn&gt;CurrentFlag&lt;/CurrentIndicatorColumn&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent&gt;1&lt;/ValueCurrent&gt;
+  &lt;ValueExpired&gt;0&lt;/ValueExpired&gt;
+  &lt;StartDateColumn&gt;insert_date&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;update_date&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::CreationDate&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
